@@ -1,7 +1,4 @@
 QT += quick
-QT += quickcontrols2
-QT += sql
-QT += svg
 
 CONFIG += c++11
 
@@ -16,19 +13,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-QML_IMPORT_PATH = $$PWD
-QML_DESIGNER_IMPORT_PATH = $$PWD
+#QML_IMPORT_PATH = $$PWD
+#QML_DESIGNER_IMPORT_PATH = $$PWD
 
-SOURCES += \
-	$$PWD/BppTable/bpptablecolumn.cpp \
-	$$PWD/BppTable/bpptabledatabase.cpp \
-	$$PWD/BppTable/bpptablemodel.cpp
-
-HEADERS += \
-	$$PWD/BppTable/bpptablecolumn.h \
-	$$PWD/BppTable/bpptabledatabase.h \
-	$$PWD/BppTable/bpptablemodel.h
-
-INCLUDEPATH += $$PWD/BppTable
-
-RESOURCES += $$PWD/BppTable.qrc
+SOURCES += $$PWD/BppFa/bppfontawesome.cpp
+HEADERS += $$PWD/BppFa/bppfontawesome.h
+INCLUDEPATH += $$PWD/BppFa
+RESOURCES += $$PWD/BppFa.qrc

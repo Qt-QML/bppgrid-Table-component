@@ -1,5 +1,5 @@
-import QtQuick 2.13
-import QtQuick.Window 2.13
+import QtQuick 2.12
+import QtQuick.Window 2.12
 import BppTableModel 0.1
 import BppTable 0.1
 
@@ -26,10 +26,6 @@ Window {
                 CellText {
                     text: bGrid.formatDisplay(display, dataType, 2)
                     horizontalAlignment: bGrid.getAlign(dataType)
-                }
-
-                CellSeparator{
-                    color: bGrid.dataLines
                 }
 
                 CellClicker {

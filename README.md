@@ -1,33 +1,40 @@
+
 # bppgrid
 QtQuick 2 Table component, modeled on TableView QML Type
 
 Tested on Windows, Android 6+, may work on other plaftorms
 
-Developed with Qt 5.13
+Developed with Qt 5.12.3
 
 ![Image of bppgrid](examples/bppgrid.png)
 
 ### How to start a new project
 
-* in your project **.pro** include BppTable.pri:
-```include($$PWD/bppgrid/BppTable.pri)```
+* in your project **.pro** add :
+```
+include($$PWD/bppgrid/BppTable.pri)
+include($$PWD/bppgrid/BppFa.pri) #only if you plan to use FontAwesome 5 Icons
+```
 * in **main.cpp** call
-  * bpp::TableModel::registerQml()
-  * engine.addImportPath("qrc:/")
-
+```
+bpp::TableModel::registerQml()
+bpp::FontAwesome::registerQml(engine); //Optional
+engine.addImportPath("qrc:/")
+```
+Example:
 ```
 #include <bpptablemodel.h>
+#include <bppfontawesome.h> //Optional
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
-
+    QQmlApplicationEngine engine;
 ...
-
     bpp::TableModel::registerQml();
-	engine.addImportPath("qrc:/");
-
+    bpp::FontAwesome::registerQml(engine); //Optional
+    engine.addImportPath("qrc:/");
 ...
 }
 ```
@@ -79,10 +86,6 @@ Window {
                     horizontalAlignment: bGrid.getAlign(dataType)
                 }
 
-                CellSeparator{
-                    color: bGrid.dataLines
-                }
-
                 CellClicker {
                     grid: bGrid
                 }
@@ -91,7 +94,7 @@ Window {
 
         cellDelegate: cellItem
 
-        columns: [
+        fromArray: [
             { role: "pkid", title: "ID", dataType: BTColumn.Int },
             { role: "name", title: "Name", minWidth: 100 },
             { role: "cost", title: "Cost", dataType: BTColumn.Dbl }
@@ -128,5 +131,5 @@ TODO: write list
 ### Todo
 - [ ] Parametrize project for avoid ```QT += sql``` if not needed
 - [ ] Test other database drivers
-- [ ] Add a component to filter data
 - [ ] Column reordering (Study a mobile friendly interface)
+- [ ] Documentation, developer guide
